@@ -52,9 +52,9 @@ void ws2812_sendarray(uint8_t *data,uint16_t datlen)
 */
 
 // Timing in ns
-#define w_zeropulse   350
-#define w_onepulse    900
-#define w_totalperiod 1250
+#define w_zeropulse   400
+#define w_onepulse    800 
+#define w_totalperiod 1250 
 
 // Fixed cycles used by the inner loop
 #if defined(__LGT8F__)     // LGT8F88A
@@ -130,6 +130,7 @@ void inline ws2812_sendarray_mask(uint8_t *data,uint16_t datlen,uint8_t maskhi)
   uint8_t *port = (uint8_t*) _SFR_MEM_ADDR(ws2812_PORTREG);
 #endif
 
+  
   ws2812_DDRREG |= maskhi; // Enable output
   
   masklo	=~maskhi&ws2812_PORTREG;
